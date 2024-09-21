@@ -9,14 +9,14 @@ from TwitchPlays_KeyCodes import *
 ##################### GAME VARIABLES #####################
 
 # Replace this with your Twitch username. Must be all lowercase.
-TWITCH_CHANNEL = 'dougdougw' 
+TWITCH_CHANNEL = 'caronlive' 
 
 # If streaming on Youtube, set this to False
 STREAMING_ON_TWITCH = True
 
 # If you're streaming on Youtube, replace this with your Youtube's Channel ID
 # Find this by clicking your Youtube profile pic -> Settings -> Advanced Settings
-YOUTUBE_CHANNEL_ID = "YOUTUBE_CHANNEL_ID_HERE" 
+YOUTUBE_CHANNEL_ID = "@Caron_" 
 
 # If you're using an Unlisted stream to test on Youtube, replace "None" below with your stream's URL in quotes.
 # Otherwise you can leave this as "None"
@@ -34,7 +34,7 @@ MESSAGE_RATE = 0.5
 # e.g. if you get a batch of 50 messages, you can choose to only process the first 10 of them and ignore the others.
 # This is helpful for games where too many inputs at once can actually hinder the gameplay.
 # Setting to ~50 is good for total chaos, ~5-10 is good for 2D platformers
-MAX_QUEUE_LENGTH = 20
+MAX_QUEUE_LENGTH = 50
 MAX_WORKERS = 100 # Maximum number of threads you can process at a time 
 
 last_time = time.time()
@@ -72,52 +72,8 @@ def handle_message(message):
         # Use the "HoldAndReleaseKey(KEYCODE, SECONDS)" function press down a key for X seconds, then release it.
         # Use the pydirectinput library to press or move the mouse
 
-        # I've added some example videogame logic code below:
-
-        ###################################
-        # Example GTA V Code 
-        ###################################
-
-        # If the chat message is "left", then hold down the A key for 2 seconds
-        if msg == "left": 
-            HoldAndReleaseKey(A, 2)
-
-        # If the chat message is "right", then hold down the D key for 2 seconds
-        if msg == "right": 
-            HoldAndReleaseKey(D, 2)
-
-        # If message is "drive", then permanently hold down the W key
-        if msg == "drive": 
-            ReleaseKey(S) #release brake key first
-            HoldKey(W) #start permanently driving
-
-        # If message is "reverse", then permanently hold down the S key
-        if msg == "reverse": 
-            ReleaseKey(W) #release drive key first
-            HoldKey(S) #start permanently reversing
-
-        # Release both the "drive" and "reverse" keys
-        if msg == "stop": 
-            ReleaseKey(W)
-            ReleaseKey(S)
-
-        # Press the spacebar for 0.7 seconds
-        if msg == "brake": 
-            HoldAndReleaseKey(SPACE, 0.7)
-
-        # Press the left mouse button down for 1 second, then release it
-        if msg == "shoot": 
-            pydirectinput.mouseDown(button="left")
-            time.sleep(1)
-            pydirectinput.mouseUp(button="left")
-
-        # Move the mouse up by 30 pixels
-        if msg == "aim up":
-            pydirectinput.moveRel(0, -30, relative=True)
-
-        # Move the mouse right by 200 pixels
-        if msg == "aim right":
-            pydirectinput.moveRel(200, 0, relative=True)
+        #TODO insert piping to TTS program/API
+        #streamer bot?
 
         ####################################
         ####################################
